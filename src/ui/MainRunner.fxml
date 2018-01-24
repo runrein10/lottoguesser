@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.uiController">
+   <children>
+      <MenuBar fx:id="menuBar" minHeight="-Infinity" prefHeight="35.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="35.0" tabMinWidth="150.0">
+        <tabs>
+          <Tab fx:id="tabAnalyzer" text="Analyzer">
+               <content>
+                  <BorderPane minHeight="-Infinity" prefHeight="700.0" prefWidth="1600.0">
+                     <left>
+                        <VBox maxHeight="-Infinity" minHeight="830.0" prefWidth="400.0" spacing="20.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <ComboBox fx:id="comboBox" minHeight="-Infinity" minWidth="-Infinity" onAction="#changeMenu" prefHeight="40.0" prefWidth="340.0" promptText="Choose Prediction Model" />
+                              <VBox fx:id="freqExplain" minHeight="250.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Frequency Predictor">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Separator prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Separator>
+                                    <Label text="LabelFrequency Predictor is a prediction model that maps the frequency of lotto number history and pick random numbers from the sorted list of most frequent numbers. 'Range' gets its range of numbers from the sorted frequency list                          for example, range 10 means that the Predictor will pick 6 numbers from 10 most frequent numbers." wrapText="true" />
+                                 </children>
+                              </VBox>
+                              <Region minHeight="100.0" />
+                              <VBox minHeight="-Infinity" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                                       <children>
+                                          <Label layoutX="30.0" layoutY="30.0" text="From">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <TextField fx:id="inputFrom" prefWidth="85.0">
+                                             <HBox.margin>
+                                                <Insets right="12.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Label text="To" />
+                                          <TextField fx:id="inputTo" prefWidth="85.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                                       <children>
+                                          <Label text="Range" />
+                                          <TextField fx:id="inputRange" prefWidth="260.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                                       <children>
+                                          <Label text="Pick">
+                                             <padding>
+                                                <Insets right="17.0" />
+                                             </padding>
+                                          </Label>
+                                          <TextField fx:id="inputPick" prefWidth="260.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <Button fx:id="buttonAnalyze" minHeight="-Infinity" mnemonicParsing="false" onAction="#analyze" prefHeight="50.0" prefWidth="340.0" text="Start Aanalyze" />
+                           </children>
+                           <padding>
+                              <Insets bottom="40.0" left="40.0" right="20.0" top="40.0" />
+                           </padding></VBox>
+                     </left>
+                     <right>
+                        <VBox minWidth="400.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TableView fx:id="resultTable" minHeight="420.0" minWidth="340.0">
+                                <columns>
+                                  <TableColumn prefWidth="100.0" text="Turn" />
+                                  <TableColumn prefWidth="100.0" text="MatchAll" />
+                                  <TableColumn prefWidth="100.0" text="Probability" />
+                                  <TableColumn prefWidth="50.0" text="1st" />
+                                  <TableColumn prefWidth="50.0" text="2nd" />
+                                  <TableColumn prefWidth="50.0" text="3rd" />
+                                  <TableColumn prefWidth="50.0" text="4th" />
+                                  <TableColumn prefWidth="50.0" text="5th" />
+                                </columns>
+                              </TableView>
+                           </children>
+                           <padding>
+                              <Insets bottom="40.0" left="20.0" right="40.0" top="40.0" />
+                           </padding></VBox>
+                     </right>
+                     <center>
+                        <VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <AreaChart prefHeight="400.0" prefWidth="760.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </AreaChart>
+                              <VBox prefHeight="400.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <Label alignment="CENTER" minWidth="80.0" text=" " />
+                                          <Label alignment="CENTER" minWidth="100.0" text="Math Count" />
+                                          <Label alignment="CENTER" minWidth="150.0" text="Math Probability" />
+                                          <Label alignment="CENTER" minWidth="100.0" text="Result Count" />
+                                          <Label alignment="CENTER" minWidth="150.0" text="Result Probability" />
+                                          <Label alignment="CENTER" minWidth="80.0" text="Improved" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <Label alignment="CENTER" minWidth="80.0" text="1st" />
+                                          <Label fx:id="mathCount1st" alignment="CENTER" minWidth="100.0" text="0" />
+                                          <Label alignment="CENTER" minWidth="150.0" text="1/8,145,060" />
+                                          <Label fx:id="resultCount1st" alignment="CENTER" minWidth="100.0" text="-" />
+                                          <Label fx:id="resultProb1" alignment="CENTER" minWidth="150.0" text="-" />
+                                          <Label fx:id="improved1" alignment="CENTER" minWidth="80.0" text="- %" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <Label alignment="CENTER" minWidth="80.0" text="2nd" />
+                                          <Label fx:id="mathCount2nd" alignment="CENTER" minWidth="100.0" text="0" />
+                                          <Label alignment="CENTER" minWidth="150.0" text="1/1,357,510" />
+                                          <Label fx:id="resultCount2nd" alignment="CENTER" minWidth="100.0" text="-" />
+                                          <Label fx:id="resultProb2" alignment="CENTER" minWidth="150.0" text="-" />
+                                          <Label fx:id="improved2" alignment="CENTER" minWidth="80.0" text="- %" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <Label alignment="CENTER" minWidth="80.0" text="3rd" />
+                                          <Label fx:id="mathCount3rd" alignment="CENTER" minWidth="100.0" text="0" />
+                                          <Label alignment="CENTER" minWidth="150.0" text="1/35,724" />
+                                          <Label fx:id="resultCount3rd" alignment="CENTER" minWidth="100.0" text="-" />
+                                          <Label fx:id="resultProb3" alignment="CENTER" minWidth="150.0" text="-" />
+                                          <Label fx:id="improved3" alignment="CENTER" minWidth="80.0" text="- %" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <Label alignment="CENTER" minWidth="80.0" text="4th" />
+                                          <Label fx:id="mathCount4th" alignment="CENTER" minWidth="100.0" text="0" />
+                                          <Label alignment="CENTER" minWidth="150.0" text="1/733" />
+                                          <Label fx:id="resultCount4th" alignment="CENTER" minWidth="100.0" text="-" />
+                                          <Label fx:id="resultProb4" alignment="CENTER" minWidth="150.0" text="-" />
+                                          <Label fx:id="improved4" alignment="CENTER" minWidth="80.0" text="- %" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <Label alignment="CENTER" minWidth="80.0" text="5th" />
+                                          <Label fx:id="mathCount5th" alignment="CENTER" minWidth="100.0" text="0" />
+                                          <Label alignment="CENTER" minWidth="150.0" text="1/45" />
+                                          <Label fx:id="resultCount5th" alignment="CENTER" minWidth="100.0" text="-" />
+                                          <Label fx:id="resultProb5" alignment="CENTER" minWidth="150.0" text="-" />
+                                          <Label fx:id="improved5" alignment="CENTER" minWidth="80.0" text="- %" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <Label alignment="CENTER" minWidth="80.0" text="MatchAll" />
+                                          <Label fx:id="mathCountAll" alignment="CENTER" minWidth="100.0" text="0" />
+                                          <Label alignment="CENTER" minWidth="150.0" text="8.57%" />
+                                          <Label fx:id="resultCountAll" alignment="CENTER" minWidth="100.0" text="-" />
+                                          <Label fx:id="resultProbAll" alignment="CENTER" minWidth="150.0" text="-" />
+                                          <Label fx:id="improvedAll" alignment="CENTER" minWidth="80.0" text="- %" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="20.0" right="20.0" />
+                                 </padding>
+                              </VBox>
+                              <TextArea fx:id="promptText" editable="false" prefHeight="107.0" prefWidth="799.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="40.0" left="20.0" right="20.0" top="40.0" />
+                           </padding>
+                        </VBox>
+                     </center>
+                  </BorderPane>
+               </content>
+            </Tab>
+          <Tab text="Untitled Tab 2">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" />
+               </content></Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</VBox>
