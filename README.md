@@ -4,7 +4,8 @@ For now it's concentrated on analysis of result history(#1~784). Various predict
 
 ## Funtions
 0. Basic structure of lottery numbers are controlled in LottoNumber.java and LottoHistory.java
-1. 
+1. Guessing new numbers by Prediction Models
+2. Analyzing results of mass prediction.
 
 ## Classification
 ### LottoCollections
@@ -36,4 +37,5 @@ an analysis app in javafx GUI for further upgrades, not yet complete.
 ## Development in progress
 SyntheticPredictor, MainRunner.
 
++ it has been observed that unfrequency predictor has 17.97% more chance to win 5th placing. when N is 30.
 ++ feel free to add on.
