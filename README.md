@@ -1,6 +1,6 @@
 # LottoPredictor
-This is a skeleton of a lottery number predictor based-on LOTTO 6/45, South Korea.
-For now it's concentrated on analysis of result history(#1~784). Various prediction models such as 
+This is a skeleton of a lottery number predictor based-on MegaMillions Five ball, US.
+For now it's concentrated on analysis of result history(#1~12). Various prediction models such as 
 
 ## Funtions
 0. Basic structure of lottery numbers are controlled in LottoNumber.java and LottoHistory.java
